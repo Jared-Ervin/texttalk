@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import { SideBar } from "./Components/SideBar";
 
 function App() {
   const [phrase, setPhrase] = useState([""]);
@@ -19,10 +20,6 @@ function App() {
   }
 
   function OutputBar() {
-    const handleSubmit = () => {
-      alert(phrase.join(" "));
-    };
-
     const handleUndo = () => {
       const lastElement = phrase.pop();
       setPhrase(phrase.filter((element) => phrase.element !== lastElement));
@@ -37,13 +34,10 @@ function App() {
         <h1 id="active-phrase">{phrase.join(" ")}</h1>
         <span></span>
         <div id="output-buttons">
-          <button className="button" onClick={handleSubmit}>
-            Submit
-          </button>
-          <button className="button" onClick={handleUndo}>
+          <button className="button" id="undo-button" onClick={handleUndo}>
             Undo
           </button>
-          <button className="button" onClick={handleDelete}>
+          <button className="button" id="clear-button" onClick={handleDelete}>
             Clear
           </button>
         </div>
@@ -129,8 +123,11 @@ function App() {
 
   return (
     <div id="container">
-      <OutputBar phrase={phrase}/>
-      <WordGrid/>
+      <SideBar/>
+    <div id="main-window">
+      <OutputBar phrase={phrase} />
+      <WordGrid />
+    </div>
     </div>
   );
 }

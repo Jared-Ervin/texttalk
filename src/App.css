@@ -1,29 +1,76 @@
 #container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: black solid 5px;
+  height: 100vh;
+  margin: 10px;
+}
+
+#main-window {
+  display: flex;
   flex-direction: column;
+  border: black solid 3px;
+  width: 92%;
+  height: 100vh;
+  background: rgb(245, 245, 245);
 }
 
 #output-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 10vh;
   border: 5px black solid;
   padding-left: 20px;
+  margin: 5px 20px 5px 30px;
+  background: rgb(255, 255, 255);
+}
 
-  margin: 5px;
+#active-phrase {
+  flex-grow: 5;
+  width: 50%;
+}
+
+#output-buttons {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  height: 100%;
+  border-top: solid 0px;
+  border-bottom: solid 0px;
+
+
 }
 
 .button {
-  height: 100px;
-  margin-left: 2px;
-  width: 100px;
+  width: 100%;
+  border-left: solid black 2px;
+  border-right: solid black 2px;
 }
+
+#undo-button {
+  background: orange;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: bolder;
+  margin-right: 0px;
+}
+#clear-button {
+  background: red;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: bolder;
+  margin-left: 5%;
+  margin-right: 0px;
+}
+
 
 .word-grid {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  height: 90vh;
   /* border: solid blue 2px; */
 }
 
@@ -32,10 +79,10 @@
   justify-content: center;
   align-items: center;
   border: 2px black solid;
-  height: 85px;
+  height: 8vh;
   width: 10%;
   margin-left: 10px;
-  /* margin: 100px; */
+  background: rgb(247, 237, 156);
 }
 
 .row {
