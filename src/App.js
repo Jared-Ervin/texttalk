@@ -30,8 +30,10 @@ function App() {
     };
 
     return (
-      <div id="output-bar">
-        <h1 id="active-phrase">{phrase.join(" ")}</h1>
+      <div id="top-bar">
+        <div id="output-bar">
+          <h1 id="active-phrase">{phrase.join(" ")}</h1>
+        </div>
         <span></span>
         <div id="output-buttons">
           <button className="button" id="undo-button" onClick={handleUndo}>
@@ -123,11 +125,11 @@ function App() {
 
   return (
     <div id="container">
-      <SideBar/>
-    <div id="main-window">
-      <OutputBar phrase={phrase} />
-      <WordGrid />
-    </div>
+      <SideBar />
+      <div id="main-window">
+        <OutputBar phrase={phrase} />
+        <WordGrid />
+      </div>
     </div>
   );
 }

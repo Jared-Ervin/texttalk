@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: black solid 5px;
+  border: black solid 3px;
   height: 95vh;
   margin: 10px;
 }
@@ -10,61 +10,59 @@
 #main-window {
   display: flex;
   flex-direction: column;
-  border: black solid 3px;
+  /* border: black solid 3px; */
   width: 92%;
   height: 95vh;
   background: rgb(245, 245, 245);
 }
 
-#output-bar {
+#top-bar {
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: space-between;
+  padding: 10px 20px 10px 30px;
   height: 10vh;
-  border: 5px black solid;
-  padding-left: 20px;
-  margin: 5px 20px 5px 30px;
-  background: rgb(255, 255, 255);
+
 }
 
-#active-phrase {
+#output-bar {
+  display: flex;
+  width: 40%;
+  flex-grow: 6;
+  align-items: center;
+  border: 5px black solid;
+  padding-left: 20px;
+  background: rgb(255, 255, 255);
+  height:80%
+}
+
+/* #active-phrase {
   flex-grow: 5;
   width: 50%;
-}
+} */
 
 #output-buttons {
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
-  height: 100%;
-  border-top: solid 0px;
-  border-bottom: solid 0px;
-
-
+  height: 90%;
 }
 
 .button {
-  width: 100%;
-  border-left: solid black 2px;
-  border-right: solid black 2px;
+  border: solid black 5px;
+  font-size: 30px;
+  font-weight: bolder;
+  width: 50%;
+  margin-left: 5%;
 }
 
 #undo-button {
   background: orange;
-  color: rgb(0, 0, 0);
-  font-size: 30px;
-  font-weight: bolder;
-  margin-right: 0px;
 }
 #clear-button {
   background: red;
-  color: rgb(0, 0, 0);
-  font-size: 30px;
-  font-weight: bolder;
-  margin-left: 5%;
-  margin-right: 0px;
 }
-
 
 .word-grid {
   display: flex;
