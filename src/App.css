@@ -1,7 +1,7 @@
 #container {
   display: flex;
   flex-direction: column;
-  }
+}
 
 #output-bar {
   display: flex;
@@ -16,7 +16,7 @@
 
 .button {
   height: 100px;
-  margin-left: 2px ;
+  margin-left: 2px;
   width: 100px;
 }
 
@@ -44,5 +44,4 @@
   /* border: 1px blue solid; */
   height: 100%;
   margin: 20px;
-
 }

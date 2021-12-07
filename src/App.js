@@ -10,6 +10,7 @@ function App() {
       console.log(targetWord);
       setPhrase([...phrase, targetWord]);
     };
+
     return (
       <div className="word-box" onClick={handleClick}>
         <h3>{props.word}</h3>
@@ -18,30 +19,33 @@ function App() {
   }
 
   function OutputBar() {
-
     const handleSubmit = () => {
-      alert(phrase.join(" "))
-    }
+      alert(phrase.join(" "));
+    };
 
     const handleUndo = () => {
-      const lastElement = phrase.pop()
-      setPhrase(phrase.filter((element) => phrase.element !== lastElement))
-    } 
+      const lastElement = phrase.pop();
+      setPhrase(phrase.filter((element) => phrase.element !== lastElement));
+    };
 
     const handleDelete = () => {
-      setPhrase([""])
-
-    }
-
+      setPhrase([""]);
+    };
 
     return (
       <div id="output-bar">
         <h1 id="active-phrase">{phrase.join(" ")}</h1>
         <span></span>
-        <div id='output-buttons'>
-        <button className="button" onClick={handleSubmit}>Submit</button>
-        <button className="button" onClick={handleUndo}>Undo</button>
-        <button className="button" onClick={handleDelete}>Clear</button>
+        <div id="output-buttons">
+          <button className="button" onClick={handleSubmit}>
+            Submit
+          </button>
+          <button className="button" onClick={handleUndo}>
+            Undo
+          </button>
+          <button className="button" onClick={handleDelete}>
+            Clear
+          </button>
         </div>
       </div>
     );
@@ -109,7 +113,7 @@ function App() {
       "",
       "",
       "",
-    ].map((word) => <WordBox word={word}/>);
+    ].map((word) => <WordBox word={word} />);
 
     return (
       <div className="word-grid">
