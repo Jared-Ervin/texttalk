@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import { SideBar } from "./Components/SideBar";
+import { wordGrid1 } from "./wordgridsnew";
 
 function App() {
   const [phrase, setPhrase] = useState([""]);
@@ -11,7 +12,7 @@ function App() {
       console.log(targetWord);
       setPhrase([...phrase, targetWord]);
     };
-
+    console.log(props.word);
     return (
       <div className="word-box" onClick={handleClick}>
         <h3>{props.word}</h3>
@@ -48,77 +49,19 @@ function App() {
   }
 
   function WordGrid() {
-    const initalWordList = [
-      "I",
-      "You",
-      "We",
-      "They",
-      "She",
-      "Him",
-      "Need",
-      "Want",
-      "Give",
-      "Share",
-      "Take",
-      "Help",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "asdfasdf",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "adsfasdf",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "adsfadsfhg",
-      "",
-      "",
-      "",
-      "zvcbsdf",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-    ].map((word) => <WordBox word={word} />);
+  
+    const activeWordGrid = wordGrid1.map((word) => (
+      <WordBox word={word[0]} childGridId={word[1]} />
+    ));
 
     return (
       <div className="word-grid">
-        <div className="row">{initalWordList.slice(0, 10)}</div>
-        <div className="row">{initalWordList.slice(10, 20)}</div>
-        <div className="row">{initalWordList.slice(20, 30)}</div>
-        <div className="row">{initalWordList.slice(30, 40)}</div>
-        <div className="row">{initalWordList.slice(40, 50)}</div>
-        <div className="row">{initalWordList.slice(50, 60)}</div>
+        <div className="row">{activeWordGrid.slice(0, 10)}</div>
+        <div className="row">{activeWordGrid.slice(10, 20)}</div>
+        <div className="row">{activeWordGrid.slice(20, 30)}</div>
+        <div className="row">{activeWordGrid.slice(30, 40)}</div>
+        <div className="row">{activeWordGrid.slice(40, 50)}</div>
+        <div className="row">{activeWordGrid.slice(50, 60)}</div>
       </div>
     );
   }
