@@ -1,18 +1,41 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { SideBar } from "./Components/SideBar";
-import { wordGrid1 } from "./wordgridsnew";
+import { wordGrids } from "./wordgridsnew";
 
 function App() {
   const [phrase, setPhrase] = useState([""]);
+  const [activeGridId, setActiveGridId] = useState(0);
+
+  // Keeping track of previous gridId
+  const prevGridIdRef = useRef();
+  useEffect(() => {
+    prevGridIdRef.current = activeGridId;
+  });
+  const prevGridId = prevGridIdRef.current;
+  // console.log(activeGridId);
+  // console.log(prevGridId);
+  // if (prevGridId !== undefined) {
+  //   console.log(wordGrids[prevGridId][0].last);
+  // }
 
   function WordBox(props) {
     const handleClick = (event) => {
       const targetWord = event.target.textContent;
-      console.log(targetWord);
-      setPhrase([...phrase, targetWord]);
+      if (targetWord !== "" && !props.last) {
+        setPhrase([...phrase, targetWord]);
+        setActiveGridId(props.childGridId);
+      }
+      if (props.last) {
+        setPhrase([...phrase, targetWord]);
+        setActiveGridId(0);
+      }
+      if (prevGridId !== undefined) {
+        if (wordGrids[prevGridId][0].last === true) {
+          setPhrase([targetWord]);
+        }
+      }
     };
-    console.log(props.word);
     return (
       <div className="word-box" onClick={handleClick}>
         <h3>{props.word}</h3>
@@ -22,12 +45,15 @@ function App() {
 
   function OutputBar() {
     const handleUndo = () => {
+      // undoing more than once has unexpected results for the word grid
       const lastElement = phrase.pop();
       setPhrase(phrase.filter((element) => phrase.element !== lastElement));
+      setActiveGridId(prevGridId);
     };
 
-    const handleDelete = () => {
+    const handleClear = () => {
       setPhrase([""]);
+      setActiveGridId(0);
     };
 
     return (
@@ -40,7 +66,7 @@ function App() {
           <button className="button" id="undo-button" onClick={handleUndo}>
             Undo
           </button>
-          <button className="button" id="clear-button" onClick={handleDelete}>
+          <button className="button" id="clear-button" onClick={handleClear}>
             Clear
           </button>
         </div>
@@ -49,9 +75,9 @@ function App() {
   }
 
   function WordGrid() {
-  
-    const activeWordGrid = wordGrid1.map((word) => (
-      <WordBox word={word[0]} childGridId={word[1]} />
+    const activeWords = wordGrids[activeGridId];
+    const activeWordGrid = activeWords.map((obj) => (
+      <WordBox word={obj.word} childGridId={obj.childGrid} last={obj.last} />
     ));
 
     return (
