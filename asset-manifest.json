@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/texttalk/static/css/main.7ffce09a.chunk.css",
-    "main.js": "/texttalk/static/js/main.2b8633a3.chunk.js",
-    "main.js.map": "/texttalk/static/js/main.2b8633a3.chunk.js.map",
-    "runtime-main.js": "/texttalk/static/js/runtime-main.269e19e9.js",
-    "runtime-main.js.map": "/texttalk/static/js/runtime-main.269e19e9.js.map",
-    "static/js/2.ed24280b.chunk.js": "/texttalk/static/js/2.ed24280b.chunk.js",
-    "static/js/2.ed24280b.chunk.js.map": "/texttalk/static/js/2.ed24280b.chunk.js.map",
-    "static/js/3.360a2671.chunk.js": "/texttalk/static/js/3.360a2671.chunk.js",
-    "static/js/3.360a2671.chunk.js.map": "/texttalk/static/js/3.360a2671.chunk.js.map",
-    "index.html": "/texttalk/index.html",
-    "static/css/main.7ffce09a.chunk.css.map": "/texttalk/static/css/main.7ffce09a.chunk.css.map",
-    "static/js/2.ed24280b.chunk.js.LICENSE.txt": "/texttalk/static/js/2.ed24280b.chunk.js.LICENSE.txt"
+    "main.css": "/texttalk/index.html/static/css/main.7ffce09a.chunk.css",
+    "main.js": "/texttalk/index.html/static/js/main.2b8633a3.chunk.js",
+    "main.js.map": "/texttalk/index.html/static/js/main.2b8633a3.chunk.js.map",
+    "runtime-main.js": "/texttalk/index.html/static/js/runtime-main.dad2b5b8.js",
+    "runtime-main.js.map": "/texttalk/index.html/static/js/runtime-main.dad2b5b8.js.map",
+    "static/js/2.ed24280b.chunk.js": "/texttalk/index.html/static/js/2.ed24280b.chunk.js",
+    "static/js/2.ed24280b.chunk.js.map": "/texttalk/index.html/static/js/2.ed24280b.chunk.js.map",
+    "static/js/3.360a2671.chunk.js": "/texttalk/index.html/static/js/3.360a2671.chunk.js",
+    "static/js/3.360a2671.chunk.js.map": "/texttalk/index.html/static/js/3.360a2671.chunk.js.map",
+    "index.html": "/texttalk/index.html/index.html",
+    "static/css/main.7ffce09a.chunk.css.map": "/texttalk/index.html/static/css/main.7ffce09a.chunk.css.map",
+    "static/js/2.ed24280b.chunk.js.LICENSE.txt": "/texttalk/index.html/static/js/2.ed24280b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.269e19e9.js",
+    "static/js/runtime-main.dad2b5b8.js",
     "static/js/2.ed24280b.chunk.js",
     "static/css/main.7ffce09a.chunk.css",
     "static/js/main.2b8633a3.chunk.js"
