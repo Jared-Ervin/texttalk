@@ -72,8 +72,13 @@ function App() {
 
   function WordGrid() {
     const activeWords = wordGrids[appState.activeGridId];
-    const activeWordGrid = activeWords.map((obj) => (
-      <WordBox word={obj.word} childGridId={obj.childGrid} last={obj.last} />
+    const activeWordGrid = activeWords.map((obj, index) => (
+      <WordBox
+        key={index}
+        word={obj.word}
+        childGridId={obj.childGrid}
+        last={obj.last}
+      />
     ));
 
     return (
