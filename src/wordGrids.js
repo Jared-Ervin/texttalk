@@ -132,7 +132,7 @@ export const wordGrids = {
     { word: "", childGrid: null, last: true },
     { word: "help", childGrid: null, last: true },
     { word: "water", childGrid: null, last: true },
-    { word: "", childGrid: null, last: true },
+    { word: "Icecream", childGrid: null, last: true },
     { word: "", childGrid: null, last: true },
     { word: "", childGrid: null, last: true },
     { word: "", childGrid: null, last: true },

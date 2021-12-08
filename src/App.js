@@ -1,39 +1,34 @@
 import "./App.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { SideBar } from "./Components/SideBar";
 import { wordGrids } from "./wordGrids";
 
-function App() {
-  const [phrase, setPhrase] = useState([""]);
-  const [activeGridId, setActiveGridId] = useState(0);
+const initialAppState = {
+  phrase: [],
+  activeGridId: 0,
+  prevGridIds: [],
+  isPhraseComplete: false,
+};
 
-  // Keeping track of previous gridId
-  const prevGridIdRef = useRef();
-  useEffect(() => {
-    prevGridIdRef.current = activeGridId;
-  });
-  const prevGridId = prevGridIdRef.current;
-  // console.log(activeGridId);
-  // console.log(prevGridId);
-  // if (prevGridId !== undefined) {
-  //   console.log(wordGrids[prevGridId][0].last);
-  // }
+function App() {
+  const [appState, setAppState] = useState(initialAppState);
 
   function WordBox(props) {
     const handleClick = (event) => {
       if (props.word === "") return;
-      if (!props.last) {
-        setPhrase([...phrase, props.word]);
-        setActiveGridId(props.childGridId);
-      } else {
-        setPhrase([...phrase, props.word]);
-        setActiveGridId(0);
-      }
+      const phrase = appState.isPhraseComplete
+        ? [props.word]
+        : [...appState.phrase, props.word];
+      const prevGridIds = appState.isPhraseComplete
+        ? []
+        : [...appState.prevGridIds, appState.activeGridId];
 
-      if (prevGridId === undefined) return;
-      if (wordGrids[prevGridId][0].last === true) {
-        setPhrase([props.word]);
-      }
+      setAppState({
+        phrase: phrase,
+        prevGridIds: prevGridIds,
+        activeGridId: props.childGridId || 0,
+        isPhraseComplete: props.last,
+      });
     };
 
     return (
@@ -45,19 +40,22 @@ function App() {
 
   function OutputBar() {
     const handleUndo = () => {
-      setPhrase(phrase.slice(0,-1));
-      setActiveGridId(prevGridId);
+      setAppState({
+        phrase: appState.phrase.slice(0, -1),
+        activeGridId: appState.prevGridIds.at(-1) || 0,
+        prevGridIds: appState.prevGridIds.slice(0, -1),
+        isPhraseComplete: appState.isPhraseComplete,
+      });
     };
 
     const handleClear = () => {
-      setPhrase([""]);
-      setActiveGridId(0);
+      setAppState(initialAppState);
     };
 
     return (
       <div id="top-bar">
         <div id="output-bar">
-          <h1 id="active-phrase">{phrase.join(" ")}</h1>
+          <h1 id="active-phrase">{appState.phrase.join(" ")}</h1>
         </div>
         <span></span>
         <div id="output-buttons">
@@ -73,7 +71,7 @@ function App() {
   }
 
   function WordGrid() {
-    const activeWords = wordGrids[activeGridId];
+    const activeWords = wordGrids[appState.activeGridId];
     const activeWordGrid = activeWords.map((obj) => (
       <WordBox word={obj.word} childGridId={obj.childGrid} last={obj.last} />
     ));
@@ -94,7 +92,7 @@ function App() {
     <div id="container">
       <SideBar />
       <div id="main-window">
-        <OutputBar phrase={phrase} />
+        <OutputBar phrase={appState.phrase} />
         <WordGrid />
       </div>
     </div>
