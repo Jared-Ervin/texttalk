@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useRef, useEffect } from "react";
 import { SideBar } from "./Components/SideBar";
-import { wordGrids } from "./wordgridsnew";
+import { wordGrids } from "./wordGrids";
 
 function App() {
   const [phrase, setPhrase] = useState([""]);
@@ -22,20 +22,21 @@ function App() {
   function WordBox(props) {
     const handleClick = (event) => {
       const targetWord = event.target.textContent;
-      if (targetWord !== "" && !props.last) {
+      if (targetWord === "") return;
+      if (!props.last) {
         setPhrase([...phrase, targetWord]);
         setActiveGridId(props.childGridId);
-      }
-      if (props.last) {
+      } else {
         setPhrase([...phrase, targetWord]);
         setActiveGridId(0);
       }
-      if (prevGridId !== undefined) {
-        if (wordGrids[prevGridId][0].last === true) {
-          setPhrase([targetWord]);
-        }
+
+      if (prevGridId === undefined) return;
+      if (wordGrids[prevGridId][0].last === true) {
+        setPhrase([targetWord]);
       }
     };
+    
     return (
       <div className="word-box" onClick={handleClick}>
         <h3>{props.word}</h3>
