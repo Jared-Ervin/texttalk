@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaLock, FaUnlock } from "react-icons/fa";
 import "../App.css";
 
 export function SideBar() {
-    return (
-        <div id="side-bar">
-            <div className="side-bar-button" id="lock-button"><h4>Lock</h4></div>
-            <div id="options">
-            <div className="side-bar-button"><h4>Favorites</h4></div>
-            <div className="side-bar-button"><h4>Add Custom</h4></div>
-            <div className="side-bar-button"><h4>Settings</h4></div>
-            </div>
-        </div>
+  const [lockStatus, setLockStatus] = useState(false);
 
-    )
+  const handleLock = () => {
+    setLockStatus(!lockStatus);
+  };
+
+  function LockButton() {
+    return (
+      <div className="side-bar-button" id="lock-button" onClick={handleLock}>
+        {!lockStatus ? <FaUnlock /> : <FaLock />}
+      </div>
+    );
+  }
+
+  return (
+    <div id="side-bar">
+      <LockButton isLocked={lockStatus} />
+      <div id="options" style={{ pointerEvents: lockStatus ? "none" : "auto" }}>
+        <button className="side-bar-button">
+          <h4>Favorites</h4>
+        </button>
+        <button className="side-bar-button">
+          <h4>Add Custom</h4>
+        </button>
+        <button className="side-bar-button">
+          <h4>Settings</h4>
+        </button>
+      </div>
+    </div>
+  );
 }

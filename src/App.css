@@ -33,21 +33,34 @@
   padding-left: 20px;
   background: rgb(255, 255, 255);
   height: 80%;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
 }
 
-#output-buttons {
+#output-buttons-container {
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
   height: 90%;
 }
 
-.button {
+.output-buttons {
   border: solid black 5px;
   font-size: 30px;
   font-weight: bolder;
   width: 50%;
   margin-left: 5%;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
+}
+
+.output-buttons:active, .side-bar-button:active, #output-bar {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
 #undo-button {
@@ -97,6 +110,7 @@
   background-color: rgba(128, 128, 128, 0.568);
   border: black solid 2px;
   margin: 20px;
+  font-size: 30px;
 }
 
 #options {
@@ -120,4 +134,8 @@
   margin: 5px 10px;
   background-color: rgb(135, 171, 238);
   border: darkblue solid 2px;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
 }

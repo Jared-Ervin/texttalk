@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SideBar } from "./Components/SideBar";
 import { wordGrids } from "./wordGrids";
 
@@ -12,9 +12,20 @@ const initialAppState = {
 
 function App() {
   const [appState, setAppState] = useState(initialAppState);
+  const [voice, setVoice] = useState();
+  const synth = window.speechSynthesis;
+
+  useEffect(() => {
+    setVoice(synth.getVoices()[4]);
+  }, [synth]);
 
   function WordBox(props) {
-    const handleClick = (event) => {
+    const msg = new SpeechSynthesisUtterance(props.word);
+    msg.voice = voice;
+    msg.rate = 0.7;
+    msg.pitch = 1;
+
+    const handleClick = () => {
       if (props.word === "") return;
       const phrase = appState.isPhraseComplete
         ? [props.word]
@@ -22,6 +33,7 @@ function App() {
       const prevGridIds = appState.isPhraseComplete
         ? []
         : [...appState.prevGridIds, appState.activeGridId];
+      synth.speak(msg);
 
       setAppState({
         phrase: phrase,
@@ -39,12 +51,13 @@ function App() {
   }
 
   function OutputBar() {
+
     const handleUndo = () => {
       setAppState({
         phrase: appState.phrase.slice(0, -1),
         activeGridId: appState.prevGridIds.at(-1) || 0,
         prevGridIds: appState.prevGridIds.slice(0, -1),
-        isPhraseComplete: appState.isPhraseComplete,
+        isPhraseComplete: initialAppState.isPhraseComplete,
       });
     };
 
@@ -52,17 +65,34 @@ function App() {
       setAppState(initialAppState);
     };
 
+    const handleClick = () => {
+      if (synth.speaking) return;
+      const msg = new SpeechSynthesisUtterance(appState.phrase.join(" "));
+      msg.voice = voice;
+      msg.rate = 0.7;
+      msg.pitch = 1;
+      synth.speak(msg);
+    };
+
     return (
       <div id="top-bar">
-        <div id="output-bar">
+        <div id="output-bar" onClick={handleClick}>
           <h1 id="active-phrase">{appState.phrase.join(" ")}</h1>
         </div>
         <span></span>
-        <div id="output-buttons">
-          <button className="button" id="undo-button" onClick={handleUndo}>
+        <div id="output-buttons-container">
+          <button
+            className="output-buttons"
+            id="undo-button"
+            onClick={handleUndo}
+          >
             Undo
           </button>
-          <button className="button" id="clear-button" onClick={handleClear}>
+          <button
+            className="output-buttons"
+            id="clear-button"
+            onClick={handleClear}
+          >
             Clear
           </button>
         </div>
