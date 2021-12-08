@@ -21,19 +21,18 @@ function App() {
 
   function WordBox(props) {
     const handleClick = (event) => {
-      const targetWord = event.target.textContent;
-      if (targetWord === "") return;
+      if (props.word === "") return;
       if (!props.last) {
-        setPhrase([...phrase, targetWord]);
+        setPhrase([...phrase, props.word]);
         setActiveGridId(props.childGridId);
       } else {
-        setPhrase([...phrase, targetWord]);
+        setPhrase([...phrase, props.word]);
         setActiveGridId(0);
       }
 
       if (prevGridId === undefined) return;
       if (wordGrids[prevGridId][0].last === true) {
-        setPhrase([targetWord]);
+        setPhrase([props.word]);
       }
     };
 
@@ -46,9 +45,7 @@ function App() {
 
   function OutputBar() {
     const handleUndo = () => {
-      // undoing more than once has unexpected results for the word grid
-      const lastElement = phrase.pop();
-      setPhrase(phrase.filter((element) => phrase.element !== lastElement));
+      setPhrase(phrase.slice(0,-1));
       setActiveGridId(prevGridId);
     };
 
