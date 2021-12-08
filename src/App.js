@@ -36,7 +36,7 @@ function App() {
         setPhrase([targetWord]);
       }
     };
-    
+
     return (
       <div className="word-box" onClick={handleClick}>
         <h3>{props.word}</h3>
