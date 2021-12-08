@@ -3,38 +3,31 @@ import React, { useState, useRef, useEffect } from "react";
 import { SideBar } from "./Components/SideBar";
 import { wordGrids } from "./wordGrids";
 
-function App() {
-  const [phrase, setPhrase] = useState([""]);
-  const [activeGridId, setActiveGridId] = useState(0);
+const initialState = {
+  phrase: [],
+  activeGridId: 0,
+  prevGridIds: [],
+  isPhraseComplete: false,
+}
 
-  // Keeping track of previous gridId
-  const prevGridIdRef = useRef();
-  useEffect(() => {
-    prevGridIdRef.current = activeGridId;
-  });
-  const prevGridId = prevGridIdRef.current;
-  // console.log(activeGridId);
-  // console.log(prevGridId);
-  // if (prevGridId !== undefined) {
-  //   console.log(wordGrids[prevGridId][0].last);
-  // }
+function App() {
+
+  const [appState, setAppState] = useState(initialState)
 
   function WordBox(props) {
     const handleClick = (event) => {
-      const targetWord = event.target.textContent;
+      const targetWord = props.word;
       if (targetWord === "") return;
-      if (!props.last) {
-        setPhrase([...phrase, targetWord]);
-        setActiveGridId(props.childGridId);
-      } else {
-        setPhrase([...phrase, targetWord]);
-        setActiveGridId(0);
-      }
 
-      if (prevGridId === undefined) return;
-      if (wordGrids[prevGridId][0].last === true) {
-        setPhrase([targetWord]);
-      }
+      const phrase = appState.isPhraseComplete ? [targetWord]: [...appState.phase, targetWord]
+      const prevGridIds = appState.isPhraseComplete ? [] : [...appState.prevGridIds, appState.activeGridId]
+
+      setAppState({
+        phrase: phrase,
+        prevGridIds: prevGridIds,
+        activeGridId: props.childGridId || 0,
+        isPhraseComplete: props.last
+      })
     };
 
     return (
@@ -47,14 +40,17 @@ function App() {
   function OutputBar() {
     const handleUndo = () => {
       // undoing more than once has unexpected results for the word grid
-      const lastElement = phrase.pop();
-      setPhrase(phrase.filter((element) => phrase.element !== lastElement));
-      setActiveGridId(prevGridId);
+
+      setAppState({
+        phrase: appState.phrase.slice(0,-1),
+        activeGridId: appState.prevGridIds.at(-1),
+        prevGridIds: appState.prevGridIds.slice(0,-1),
+        isPhraseComplete: appState.isPhraseComplete
+      })
     };
 
     const handleClear = () => {
-      setPhrase([""]);
-      setActiveGridId(0);
+      setAppState(initialState)
     };
 
     return (
