@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import {IoMdArrowBack} from "react-icons/io"
 import { SideBar } from "./Components/SideBar";
 import { wordGrids } from "./wordGrids";
 
@@ -16,14 +17,18 @@ function App() {
   const synth = window.speechSynthesis;
 
   useEffect(() => {
-    setVoice(synth.getVoices()[4]);
+    const activeVoice = synth.getVoices().find(element => element.name === "Google US English")
+    setVoice(activeVoice);
   }, [synth]);
+
+  // console.log(synth.getVoices()[4].name)
 
   function WordBox(props) {
     const msg = new SpeechSynthesisUtterance(props.word);
     msg.voice = voice;
     msg.rate = 0.7;
     msg.pitch = 1;
+
 
     const handleClick = () => {
       if (props.word === "") return;
@@ -123,11 +128,28 @@ function App() {
     );
   }
 
+  const changeGridBack = () => {
+
+    if (!appState.prevGridIds.at(-1)) return;
+
+    const newGridId =  appState.prevGridIds.at(-1)
+
+    setAppState({
+      phrase: appState.phrase,
+      prevGridIds: appState.prevGridIds,
+      activeGridId: newGridId,
+      isPhraseComplete: initialAppState.isPhraseComplete
+    })
+  }
+
   return (
     <div id="container">
       <SideBar />
       <div id="main-window">
         <OutputBar phrase={appState.phrase} />
+        <div id="grid-change-button-container" >
+        <button onClick={changeGridBack} id="back-button"><IoMdArrowBack /></button>
+        </div>
         <WordGrid />
       </div>
     </div>

@@ -147,3 +147,16 @@
   outline: none;
   transition: 0.2s all;
 }
+
+#grid-change-button-container {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+
+#back-button {
+  height: 100%;
+  font-size: 20px;
+}
