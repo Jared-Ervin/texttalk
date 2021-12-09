@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/texttalk/static/css/main.21a59475.chunk.css",
-    "main.js": "/texttalk/static/js/main.754d6156.chunk.js",
-    "main.js.map": "/texttalk/static/js/main.754d6156.chunk.js.map",
+    "main.js": "/texttalk/static/js/main.e6640442.chunk.js",
+    "main.js.map": "/texttalk/static/js/main.e6640442.chunk.js.map",
     "runtime-main.js": "/texttalk/static/js/runtime-main.954c3718.js",
     "runtime-main.js.map": "/texttalk/static/js/runtime-main.954c3718.js.map",
     "static/js/2.335ff66c.chunk.js": "/texttalk/static/js/2.335ff66c.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.954c3718.js",
     "static/js/2.335ff66c.chunk.js",
     "static/css/main.21a59475.chunk.css",
-    "static/js/main.754d6156.chunk.js"
+    "static/js/main.e6640442.chunk.js"
   ]
 }
