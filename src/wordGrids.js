@@ -1,6 +1,6 @@
 export const wordGrids = {
   0: [
-    { word: "I", childGrid: 1, last: false },
+    { word: "I ", childGrid: 1, last: false },
     { word: "You", childGrid: 1, last: false},
     { word: "He", childGrid: 1, last: false },
     { word: "She", childGrid: 1, last: false },
