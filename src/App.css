@@ -37,6 +37,7 @@
   cursor: pointer;
   outline: none;
   transition: 0.2s all;
+  color: black;
 }
 
 #output-buttons-container {
@@ -56,6 +57,7 @@
   cursor: pointer;
   outline: none;
   transition: 0.2s all;
+  color: black;
 }
 
 .output-buttons:active, .side-bar-button:active, #output-bar:active, .word-box:active {
@@ -90,6 +92,7 @@
   cursor: pointer;
   outline: none;
   transition: 0.2s all;
+  color: black;
 }
 
 .row {
@@ -137,7 +140,8 @@
   height: 7%;
   margin: 5px 10px;
   background-color: rgb(135, 171, 238);
-  border: darkblue solid 2px;
+  color: black;
+  border: black solid 2px;
   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   cursor: pointer;
   outline: none;
