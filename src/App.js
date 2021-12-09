@@ -1,8 +1,8 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { WordGrid } from "./Components/WordGrid";
-import { OutputBar } from "./Components/OutputBar";
-import { SideBar } from "./Components/SideBar.jsx";
+import { WordGrid } from "./components/word_grids/WordGrid"
+import { OutputBar } from "./components/OutputBar";
+import { SideBar } from "./components/SideBar.jsx";
 
 const initialAppState = {
   phrase: [],

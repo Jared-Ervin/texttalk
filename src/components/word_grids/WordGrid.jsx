@@ -1,6 +1,6 @@
 import React from "react";
-import { WordBox } from "./WordBox";
-import { wordGrids } from "../wordGrids";
+import { WordBox } from "../WordBox";
+import { wordGrids } from "./wordGrids";
 
 export function WordGrid(props) {
   const [appState, setAppState] = props.appState;
