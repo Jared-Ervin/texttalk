@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/texttalk/static/css/main.21a59475.chunk.css",
-    "main.js": "/texttalk/static/js/main.e6640442.chunk.js",
-    "main.js.map": "/texttalk/static/js/main.e6640442.chunk.js.map",
-    "runtime-main.js": "/texttalk/static/js/runtime-main.954c3718.js",
-    "runtime-main.js.map": "/texttalk/static/js/runtime-main.954c3718.js.map",
-    "static/js/2.335ff66c.chunk.js": "/texttalk/static/js/2.335ff66c.chunk.js",
-    "static/js/2.335ff66c.chunk.js.map": "/texttalk/static/js/2.335ff66c.chunk.js.map",
-    "static/js/3.561b397c.chunk.js": "/texttalk/static/js/3.561b397c.chunk.js",
-    "static/js/3.561b397c.chunk.js.map": "/texttalk/static/js/3.561b397c.chunk.js.map",
+    "main.js": "/texttalk/static/js/main.d1f64424.chunk.js",
+    "main.js.map": "/texttalk/static/js/main.d1f64424.chunk.js.map",
+    "runtime-main.js": "/texttalk/static/js/runtime-main.269e19e9.js",
+    "runtime-main.js.map": "/texttalk/static/js/runtime-main.269e19e9.js.map",
+    "static/js/2.050daa63.chunk.js": "/texttalk/static/js/2.050daa63.chunk.js",
+    "static/js/2.050daa63.chunk.js.map": "/texttalk/static/js/2.050daa63.chunk.js.map",
+    "static/js/3.360a2671.chunk.js": "/texttalk/static/js/3.360a2671.chunk.js",
+    "static/js/3.360a2671.chunk.js.map": "/texttalk/static/js/3.360a2671.chunk.js.map",
     "index.html": "/texttalk/index.html",
     "static/css/main.21a59475.chunk.css.map": "/texttalk/static/css/main.21a59475.chunk.css.map",
-    "static/js/2.335ff66c.chunk.js.LICENSE.txt": "/texttalk/static/js/2.335ff66c.chunk.js.LICENSE.txt"
+    "static/js/2.050daa63.chunk.js.LICENSE.txt": "/texttalk/static/js/2.050daa63.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.954c3718.js",
-    "static/js/2.335ff66c.chunk.js",
+    "static/js/runtime-main.269e19e9.js",
+    "static/js/2.050daa63.chunk.js",
     "static/css/main.21a59475.chunk.css",
-    "static/js/main.e6640442.chunk.js"
+    "static/js/main.d1f64424.chunk.js"
   ]
 }
